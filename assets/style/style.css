@@ -1,0 +1,52 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: "Montserrat", sans-serif;
+}
+.container {
+  max-width: 1220px;
+  margin: 0 auto;
+}
+.title {
+  text-align: center;
+}
+.subtitle {
+  font-size: 16px;
+}
+.calculator {
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 5px 0;
+}
+
+.select-list,
+.input--volume {
+  width: 300px;
+  height: 30px;
+  margin: 10px 0;
+}
+.box {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+}
+.label {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  margin: 5px 0;
+}
+.radio {
+  margin: 0 5px;
+}
+.btn {
+  width: 150px;
+  height: 30px;
+}
