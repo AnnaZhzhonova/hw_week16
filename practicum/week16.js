@@ -205,7 +205,11 @@ document.querySelector(".b-11").onclick = makeEleven;
 const paragraphTwelve = document.getElementById("practicum12");
 
 function makeTwelve() {
-  //Ваш код
+  const form2 = document.forms[1];
+  const checkboxOne = form2.elements.checkboxOne.getAttribute("id");
+  const checkboxTwo = form2.elements.checkboxTwo.getAttribute("id");
+  const checkboxThree = form2.elements.checkboxThree.getAttribute("id");
+  paragraphTwelve.textContent = `${checkboxOne}, ${checkboxTwo}, ${checkboxThree}`;
 }
 
 document.querySelector(".b-12").onclick = makeTwelve;
@@ -222,7 +226,14 @@ document.querySelector(".b-12").onclick = makeTwelve;
 const paragraphThirteen = document.getElementById("practicum13");
 
 function checkButton(e) {
-  //Ваш код
+  e.preventDefault();
+  const form4 = document.forms[3];
+  const formRadio = form4.elements.fourthName;
+  if (formRadio.checked) {
+    return (paragraphThirteen.textContent = `Кнопка выбрана`);
+  } else {
+    return (paragraphThirteen.textContent = `Кнопка не выбрана`);
+  }
 }
 
 document.querySelector(".b-13").addEventListener("click", checkButton);
@@ -242,7 +253,16 @@ document.querySelector(".b-13").addEventListener("click", checkButton);
 const paragraphFourteen = document.getElementById("practicum14");
 
 function checkOption() {
-  //Ваш код
+  const form1 = document.forms[0];
+  const select = form1.elements.firstSelect;
+  const selectedOption = select.value;
+  if (selectedOption === "Опция 1") {
+    paragraphFourteen.textContent = "Выбран первый вариант";
+  } else if (selectedOption === "Опция 2") {
+    paragraphFourteen.textContent = "Выбран второй вариант";
+  } else if (selectedOption === "Опция 3") {
+    paragraphFourteen.textContent = "Выбран третий вариант";
+  }
 }
 
 document.querySelector(".b-14").onclick = checkOption;
@@ -256,7 +276,9 @@ document.querySelector(".b-14").onclick = checkOption;
 //- Установите значение selectedIndex равным индексу опции, которую вы хотите выбрать по умолчанию
 
 function makeFifteen() {
-  //Ваш код
+  const form1 = document.forms[0];
+  const select = form1.elements.firstSelect;
+  select.selectedIndex = 2;
 }
 
 makeFifteen();
@@ -270,7 +292,9 @@ makeFifteen();
 //- Установите значение checked равным true для выбранного варианта
 
 function makeSixteen() {
-  //Ваш код
+  const form2 = document.forms[1];
+  const checkbox = form2.elements.checkbox3;
+  checkbox.checked = true;
 }
 
 makeSixteen();
@@ -289,7 +313,14 @@ const formOne = document.forms.formOne;
 formOne.addEventListener("submit", function (event) {
   event.preventDefault(); //Отмена отправки
 
-  //Ваш код
+  const form1 = document.forms[0];
+  const name = form1.elements.firstName;
+  const email = form1.elements.firstEmail;
+  if (name.value === "" || email.value === "") {
+    return (errorMessage.textContent = "Пожалуйста, заполните все поля");
+  } else {
+    form1.submit();
+  }
 });
 
 //Задание 18
@@ -302,7 +333,8 @@ formOne.addEventListener("submit", function (event) {
 
 formOne.addEventListener("submit", function (event) {
   event.preventDefault(); //Отмена отправки
-  //Ваш код
+  const form1 = document.forms[0];
+  form1.reset();
 });
 
 //Задание 19
@@ -313,11 +345,17 @@ formOne.addEventListener("submit", function (event) {
 //- В обработчике события, используя условные операторы (if), проверьте выбранную опцию
 //- В зависимости от выбранной опции, измените цвет фона страницы, используя свойство document.body.style.backgroundColor
 
-//const selectElement = //Ваш код
+const selectElement = document.getElementById("firstSelect");
 
-// selectElement.onchange = function () {
-// 	//Ваш код
-// };
+selectElement.onchange = function () {
+  if (selectElement.value === "Опция 1") {
+    document.body.style.backgroundColor = "red";
+  } else if (selectElement.value === "Опция 2") {
+    document.body.style.backgroundColor = "blue";
+  } else if (selectElement.value === "Опция 3") {
+    document.body.style.backgroundColor = "white";
+  }
+};
 
 //Задание 20
 //Добавьте валидацию для поля Email
@@ -328,11 +366,18 @@ formOne.addEventListener("submit", function (event) {
 //- В обработчике события, используя регулярное выражение (RegExp), проверьте введенное значение поля Email
 //- В зависимости от результата проверки, измените стиль поля Email (например, установите класс с ошибкой) и отобразите сообщение об ошибке в элементе <p> (добавьте элемент самостоятельно) с помощью свойства textContent.
 
-//const emailInput = //Ваш код
+const form1 = document.forms[0];
+const emailInput = form1.elements.firstEmail;
 const errorMessage = document.getElementById("errorMessage");
 
 emailInput.oninput = function () {
-  //Ваш код
+  const mailFormat = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+  if (emailInput.value.match(mailFormat)) {
+    return true;
+  } else {
+    emailInput.style.backgroundColor = "red";
+    errorMessage.textContent = "Пожалуйста, введите корректный emails";
+  }
 };
 
 //Задание 21
