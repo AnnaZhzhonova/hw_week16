@@ -498,14 +498,15 @@ selectFormThree.addEventListener("change", function () {
 //При заполнении всех полей третьей формы выведите их значения в консоль. Используйте JavaScript без использования объекта FormData.
 
 const formThree = document.forms.formThree;
-const nameInputThree = form.elements.thirdName;
-const emailInputThree = form.elements.thirdEmail;
+const nameInputThree = formThree.elements.thirdName;
+const emailInputThree = formThree.elements.thirdEmail;
 
 function handleSubmitTwentyNine(event) {
   event.preventDefault();
 
   if (nameInputThree.value && emailInputThree.value) {
-    //Ваш код
+    console.log("Имя: " + nameInputThree.value);
+    console.log("Email: " + emailInputThree.value);
   } else {
     console.log("Пожалуйста, заполните все поля формы.");
   }
@@ -518,6 +519,8 @@ formThree.addEventListener("submit", handleSubmitTwentyNine);
 
 const formTwo = document.forms.formTwo;
 const resultElement = document.getElementById("result30");
+const nameInputTwo = formTwo.elements.secondName;
+const emailInputTwo = formTwo.elements.secondEmail;
 
 formTwo.addEventListener("submit", handleSubmit);
 
@@ -529,5 +532,7 @@ function handleSubmit(event) {
     (checkbox) => checkbox.labels[0].textContent
   );
 
-  //Ваш код
+  console.log("Имя: " + nameInputTwo.value);
+  console.log("Email: " + emailInputTwo.value);
+  console.log("Выбор: " + selectedOptions);
 }
