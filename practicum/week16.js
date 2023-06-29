@@ -396,7 +396,9 @@ document.querySelector(".b-21").onclick = function (event) {
   });
 
   if (!isChecked) {
-    //Ваш код
+    event.preventDefault();
+    document.getElementById("result21").textContent =
+      "Ошибка: не выбран ни один из чекбоксов";
   } else {
     document.getElementById("result21").textContent = "Проверка пройдена";
   }
@@ -409,7 +411,9 @@ document.querySelector(".b-22").onclick = function (event) {
   const nameInput = document.forms.formThree.elements.thirdName;
 
   if (nameInput.value.trim() === "") {
-    //Ваш код
+    event.preventDefault();
+    document.getElementById("result22").textContent =
+      "Ошибка: имя не заполнено";
   } else {
     document.getElementById("result22").textContent = "Проверка пройдена";
   }
@@ -419,12 +423,26 @@ document.querySelector(".b-22").onclick = function (event) {
 //При выборе опции "Я хочу зарегистрироваться" в четвёртой форме кнопка должна быть разблокирована. В противном случае, сделайте кнопку отправки формы заблокированной.
 //Подсказка: используйте свойство disabled
 
+document.querySelector(".b-4").onchange = function () {
+  const formRadio = document.getElementsByName("fourthName");
+  const formBtn = document.getElementsByName("fourthButton");
+
+  if (formRadio.checked) {
+    formBtn.disabled = false;
+  } else {
+    formBtn.disabled = true;
+  }
+};
+
 //Задание 24
 //Найдите все поля ввода на странице и установите им атрибут "placeholder" со значением "Введите данные".
 //Подсказка: для установки атрибута используйте методы forEach и setAttribute
 
 document.querySelector(".b-24").onclick = function () {
-  //Ваш код
+  const formInputFields = document.querySelectorAll(".form__input");
+  formInputFields.forEach(function (input) {
+    input.setAttribute("placeholder", "Введите данные");
+  });
 };
 
 //Задание 25
@@ -435,11 +453,11 @@ document.querySelector(".b-25").onclick = function () {
 
   inputs.forEach(function (input) {
     input.addEventListener("focus", function () {
-      //Ваш код
+      input.style.border = "2px solid #00ff00";
     });
 
     input.addEventListener("blur", function () {
-      //Ваш код
+      input.style.border = "";
     });
   });
 };
@@ -449,7 +467,9 @@ document.querySelector(".b-25").onclick = function () {
 
 document.querySelector(".b-26").onclick = function (event) {
   event.preventDefault();
-  //Ваш код
+  const result = document.getElementById("result26");
+  const placeholder = document.forms[2].elements.thirdName;
+  result.textContent = placeholder.getAttribute("placeholder");
 };
 
 //Задание 27
@@ -459,7 +479,8 @@ const formTwoInputs = document.querySelectorAll(".secondForm input");
 
 formTwoInputs.forEach(function (input) {
   input.addEventListener("input", function () {
-    //Ваш код
+    const result = document.getElementById("result27");
+    result.textContent = "Изменение внесено";
   });
 });
 
@@ -469,7 +490,8 @@ formTwoInputs.forEach(function (input) {
 const selectFormThree = document.getElementById("firstSelect");
 
 selectFormThree.addEventListener("change", function () {
-  //Ваш код
+  const result = document.getElementById("result28");
+  result.textContent = "Опция выбрана";
 });
 
 //Задание 29
