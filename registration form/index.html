@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/style/normalize.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/style/style.css" />
+    <title>Форма регистрации</title>
+  </head>
+  <body>
+    <main>
+      <section>
+        <div class="container">
+          <h1 class="title">Регистрация</h1>
+          <form class="registration-form" novalidate>
+            <input
+              type="text"
+              name="name"
+              class="registration-form__input registration-form__input--name"
+              placeholder="Имя"
+              minlength="2"
+              maxlength="20"
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              class="registration-form__input registration-form__input--email"
+              placeholder="Электронная почта"
+              required
+            />
+            <input
+              type="text"
+              name="age"
+              class="registration-form__input registration-form__input--age"
+              placeholder="Возраст"
+            />
+            <select
+              name="select-list"
+              class="registration-form__input registration-form__select"
+              required
+            >
+              <option value="plug" class="registration-form__option" selected>
+                Профессия
+              </option>
+              <option value="doctor" class="registration-form__option">
+                Врач
+              </option>
+              <option value="programmer" class="registration-form__option">
+                Программист
+              </option>
+              <option value="teacher" class="registration-form__option">
+                Учитель
+              </option>
+              <option value="designer" class="registration-form__option">
+                Дизайнер
+              </option>
+              <option value="engineer" class="registration-form__option">
+                Инженер
+              </option>
+              <option value="seller" class="registration-form__option">
+                Продавец
+              </option>
+              <option value="other" class="registration-form__option">
+                Другое
+              </option>
+            </select>
+            <input
+              type="password"
+              name="password"
+              class="registration-form__input registration-form__password"
+              placeholder="Придумайте пароль"
+              minlength="8"
+              pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()])[A-Za-z\d!@#$%^&*()]{8,20}$/"
+              required
+            />
+            <input
+              type="password"
+              name="password-repeat"
+              class="registration-form__input registration-form__password-repeat"
+              placeholder="Повторите пароль"
+              minlength="8"
+              pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()])[A-Za-z\d!@#$%^&*()]{8,20}$/"
+              required
+            />
+            <label class="registration-form__label">
+              <input
+                type="checkbox"
+                class="registration-form__checkbox"
+                required
+              />
+              Согласие на обработку персональных данных</label
+            >
+            <input
+              type="submit"
+              name="btn"
+              class="registration-form__input registration-form__btn"
+              value="Зарегестрироваться"
+            />
+          </form>
+        </div>
+      </section>
+    </main>
+    <script src="./index.js"></script>
+  </body>
+</html>
