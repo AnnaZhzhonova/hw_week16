@@ -18,7 +18,7 @@
       <section>
         <div class="container">
           <h1 class="title">Регистрация</h1>
-          <form class="registration-form" novalidate>
+          <form class="registration-form" name="registration" novalidate>
             <input
               type="text"
               name="name"
@@ -35,6 +35,7 @@
               placeholder="Электронная почта"
               required
             />
+            <p class="error-input error-email"></p>
             <input
               type="text"
               name="age"
@@ -42,11 +43,16 @@
               placeholder="Возраст"
             />
             <select
-              name="select-list"
+              name="profession"
               class="registration-form__input registration-form__select"
               required
             >
-              <option value="plug" class="registration-form__option" selected>
+              <option
+                value=""
+                class="registration-form__option"
+                disabled
+                selected
+              >
                 Профессия
               </option>
               <option value="doctor" class="registration-form__option">
@@ -82,7 +88,7 @@
             />
             <input
               type="password"
-              name="password-repeat"
+              name="passwordRepeat"
               class="registration-form__input registration-form__password-repeat"
               placeholder="Повторите пароль"
               minlength="8"
@@ -92,17 +98,20 @@
             <label class="registration-form__label">
               <input
                 type="checkbox"
+                name="agreement"
                 class="registration-form__checkbox"
                 required
               />
               Согласие на обработку персональных данных</label
             >
+
             <input
               type="submit"
               name="btn"
               class="registration-form__input registration-form__btn"
               value="Зарегестрироваться"
             />
+            <p class="error"></p>
           </form>
         </div>
       </section>
