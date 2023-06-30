@@ -1,16 +1,11 @@
 const registerForm = document.forms.registration;
 const formElements = registerForm.elements;
-const formName = formElements.name;
-const formEmail = formElements.email;
-const formAge = formElements.age;
-const formProfession = formElements.profession;
-const formPassword = formElements.password;
-const formPasswordRepeat = formElements.passwordRepeat;
-const formAgreement = formElements.agreement;
 
-const errorMessage = document.querySelector(".error");
+//проверка имени
+const formName = formElements.name;
 
 //проверка почты
+const formEmail = formElements.email;
 function checkEmail() {
   const mailFormat = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
   const errorEmail = registerForm.querySelector(".error-email");
@@ -22,6 +17,12 @@ function checkEmail() {
     return false;
   }
 }
+//проверка возраста
+const formAge = formElements.age;
+
+//проверка пароля
+const formPassword = formElements.password;
+const formPasswordRepeat = formElements.passwordRepeat;
 
 //валидация формы
 function validation(form, inputs, error) {
@@ -38,6 +39,7 @@ function validation(form, inputs, error) {
   return result;
 }
 
+const errorMessage = document.querySelector(".error");
 //отправка формы
 registerForm.addEventListener("submit", function (event) {
   event.preventDefault();
