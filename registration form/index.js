@@ -10,7 +10,8 @@ const formAgreement = formElements.agreement;
 
 const errorMessage = document.querySelector(".error");
 
-formEmail.oninput = function () {
+//проверка почты
+function checkEmail() {
   const mailFormat = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
   const errorEmail = registerForm.querySelector(".error-email");
   if (formEmail.value.match(mailFormat)) {
@@ -20,13 +21,15 @@ formEmail.oninput = function () {
     errorEmail.textContent = "Пожалуйста, введите корректный email";
     return false;
   }
-};
+}
 
 //валидация формы
 function validation(form, inputs, error) {
   let result = true;
+
+  const chechedEmail = checkEmail();
   for (let input of inputs) {
-    if (input.value === "") {
+    if (input.value === "" || chechedEmail === false) {
       return (error.textContent = `Пожалуйста, заполните все обязательные поля`);
       result = false;
     }
