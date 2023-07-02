@@ -28,6 +28,7 @@
               maxlength="20"
               required
             />
+            <p class="error-input error-name"></p>
             <input
               type="email"
               name="email"
@@ -37,11 +38,12 @@
             />
             <p class="error-input error-email"></p>
             <input
-              type="text"
+              type="number"
               name="age"
               class="registration-form__input registration-form__input--age"
               placeholder="Возраст"
             />
+            <p class="error-input error-age"></p>
             <select
               name="profession"
               class="registration-form__input registration-form__select"
@@ -86,6 +88,7 @@
               pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()])[A-Za-z\d!@#$%^&*()]{8,20}$/"
               required
             />
+            <p class="error-input error-password"></p>
             <input
               type="password"
               name="passwordRepeat"
@@ -95,6 +98,7 @@
               pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()])[A-Za-z\d!@#$%^&*()]{8,20}$/"
               required
             />
+            <p class="error-input error-password--repeat"></p>
             <label class="registration-form__label">
               <input
                 type="checkbox"

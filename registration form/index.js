@@ -3,6 +3,21 @@ const formElements = registerForm.elements;
 
 //проверка имени
 const formName = formElements.name;
+function checkName() {
+  const formattedName = formName.value.trim();
+  const minlength = parseInt(formName.getAttribute("minlength"));
+  const maxlength = parseInt(formName.getAttribute("maxlength"));
+  const errorName = registerForm.querySelector(".error-name");
+  if (formattedName.length < minlength) {
+    errorName.textContent = "Минимальное колличество символов 3";
+    return false;
+  } else if (formattedName.length > maxlength) {
+    errorName.textContent = "Максимальное колличество символов 20";
+    return false;
+  } else {
+    return true;
+  }
+}
 
 //проверка почты
 const formEmail = formElements.email;
@@ -20,17 +35,73 @@ function checkEmail() {
 //проверка возраста
 const formAge = formElements.age;
 
+function checkAge() {
+  const ageNumber = parseInt(formAge.value);
+  const errorAge = registerForm.querySelector(".error-age");
+  if (ageNumber >= 100) {
+    errorAge.textContent = "Введите корректный возраст";
+    return false;
+  } else {
+    return true;
+  }
+}
+
 //проверка пароля
 const formPassword = formElements.password;
-const formPasswordRepeat = formElements.passwordRepeat;
 
+function checkPassword() {
+  const errorPassword = registerForm.querySelector(".error-password");
+  const passwordFormat =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()])[A-Za-z\d!@#$%^&*()]{8,20}$/;
+  if (formPassword.value.match(passwordFormat)) {
+    return true;
+  } else {
+    errorPassword.textContent = "Пожалуйста, введите корректный пароль";
+    return false;
+  }
+}
+//Повтор пароля
+const formPasswordRepeat = formElements.passwordRepeat;
+const errorPasswordRepeat = registerForm.querySelector(
+  ".error-password--repeat"
+);
+
+function checkRepeatedPassword() {
+  if (formPassword.value === formPasswordRepeat.value) {
+    return true;
+  } else {
+    errorPasswordRepeat.textContent = "пароли не совпадают";
+    return false;
+  }
+}
+//Проверка согласия
+const formAgreement = formElements.agreement;
+function checkAgreement() {
+  if (formAgreement.checked === true) {
+    return true;
+  } else {
+    return false;
+  }
+}
 //валидация формы
 function validation(form, inputs, error) {
   let result = true;
-
+  const checkedName = checkName();
   const chechedEmail = checkEmail();
+  const checkedAge = checkAge();
+  const checkedPassword = checkPassword();
+  const checkedRepeatedPassword = checkRepeatedPassword();
+  const checkedAgreement = checkAgreement();
   for (let input of inputs) {
-    if (input.value === "" || chechedEmail === false) {
+    if (
+      input.value === "" ||
+      checkedName === false ||
+      chechedEmail === false ||
+      checkedAge === false ||
+      checkedPassword === false ||
+      checkedRepeatedPassword === false ||
+      checkedAgreement === false
+    ) {
       return (error.textContent = `Пожалуйста, заполните все обязательные поля`);
       result = false;
     }
@@ -40,6 +111,7 @@ function validation(form, inputs, error) {
 }
 
 const errorMessage = document.querySelector(".error");
+
 //отправка формы
 registerForm.addEventListener("submit", function (event) {
   event.preventDefault();
