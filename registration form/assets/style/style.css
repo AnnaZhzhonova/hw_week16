@@ -7,14 +7,21 @@ body {
   flex-direction: column;
   justify-content: space-between;
   font-family: "Montserrat", sans-serif;
+  background-image: url(../images/background.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
+
 .container {
   max-width: 1220px;
   margin: 0 auto;
 }
+img {
+  max-width: 100%;
+}
 .title {
   text-align: center;
-  color: #116367;
+  color: #bdcfd0;
 }
 .registration-form {
   display: flex;
@@ -22,7 +29,10 @@ body {
   align-items: center;
   margin: auto;
   max-width: 500px;
-  border: 1px dashed #5bbbc0;
+  background-color: rgb(255, 255, 255, 0.5);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3),
+    -23px 0 20px -23px rgba(0, 0, 0, 0.8), 23px 0 20px -23px rgba(0, 0, 0, 0.8),
+    0 0 40px rgba(0, 0, 0, 0.1) inset;
 }
 
 .registration-form__input {
@@ -30,12 +40,20 @@ body {
   padding: 0 15px;
   height: 35px;
   width: 70%;
-  border: 1px solid #5bbbc0;
+  border: none;
   border-radius: 7px;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
 }
 
 .registration-form__label {
   font-size: 12px;
+  font-weight: 800;
+  color: #000000;
+}
+.registration-form__btn {
+  background-color: #5bbbc0;
+  color: #000000;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
 }
 .error {
   margin: 0;
@@ -48,4 +66,45 @@ body {
   height: 10px;
   color: red;
   font-size: 10px;
+}
+
+.pop-block {
+  display: none;
+}
+.pop-block--show {
+  display: inline-block;
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  height: 100vh;
+  padding-top: 200px;
+  background-color: rgb(255, 255, 255, 0.5);
+}
+.pop-block__message {
+  position: relative;
+  margin: 0 auto;
+  width: 300px;
+  height: 120px;
+  background-color: #fff;
+  background-image: url(../images/flower.svg);
+  background-size: 20px;
+  background-repeat: repeat-x;
+  background-position: bottom;
+  border: 2px solid rgb(91, 187, 192);
+  border-radius: 5px;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+}
+.pop-block__btn {
+  position: absolute;
+  right: 0;
+  margin: 10px 10px 0 0;
+  padding: 0;
+  width: 20px;
+  background: none;
+  border: none;
+}
+.pop-block__text {
+  margin: 50px 0;
+  text-align: center;
+  font-size: 18px;
 }

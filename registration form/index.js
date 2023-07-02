@@ -111,12 +111,17 @@ function validation(form, inputs, error) {
 }
 
 const errorMessage = document.querySelector(".error");
-
+const popMessage = document.querySelector(".pop-block");
 //отправка формы
 registerForm.addEventListener("submit", function (event) {
   event.preventDefault();
   if (validation(this, formElements, errorMessage) === true) {
-    console.log(`Регистрация завершена`);
+    popMessage.classList.add("pop-block--show");
     this.reset();
   }
 });
+document
+  .querySelector(".pop-block__btn")
+  .addEventListener("click", function () {
+    popMessage.classList.remove("pop-block--show");
+  });
