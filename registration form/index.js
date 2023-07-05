@@ -53,12 +53,13 @@ function checkPassword() {
   const errorPassword = registerForm.querySelector(".error-password");
   const passwordFormat =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()])[A-Za-z\d!@#$%^&*()]{8,20}$/;
-  if (formPassword.value.match(passwordFormat)) {
-    return true;
-  } else {
+  const isValidPassword = formPassword.value.match(passwordFormat);
+
+  if (!isValidPassword) {
     errorPassword.textContent = "Пожалуйста, введите корректный пароль";
-    return false;
   }
+
+  return isValidPassword;
 }
 //Повтор пароля
 const formPasswordRepeat = formElements.passwordRepeat;
@@ -67,24 +68,17 @@ const errorPasswordRepeat = registerForm.querySelector(
 );
 
 function checkRepeatedPassword() {
-  if (formPassword.value === formPasswordRepeat.value) {
-    return true;
-  } else {
-    errorPasswordRepeat.textContent = "пароли не совпадают";
-    return false;
+  if (formPassword.value !== formPasswordRepeat.value) {
+    return (errorPasswordRepeat.textContent = "пароли не совпадают");
   }
 }
 //Проверка согласия
 const formAgreement = formElements.agreement;
 function checkAgreement() {
-  if (formAgreement.checked === true) {
-    return true;
-  } else {
-    return false;
-  }
+  return formAgreement.checked;
 }
 //валидация формы
-function validation(form, inputs, error) {
+function validate(form, inputs, error) {
   let result = true;
   const checkedName = checkName();
   const chechedEmail = checkEmail();
@@ -115,7 +109,7 @@ const popMessage = document.querySelector(".pop-block");
 //отправка формы
 registerForm.addEventListener("submit", function (event) {
   event.preventDefault();
-  if (validation(this, formElements, errorMessage) === true) {
+  if (validate(this, formElements, errorMessage) === true) {
     popMessage.classList.add("pop-block--show");
     this.reset();
   }

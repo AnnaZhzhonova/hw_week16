@@ -86,10 +86,6 @@ img {
   width: 300px;
   height: 120px;
   background-color: #fff;
-  background-image: url(../images/flower.svg);
-  background-size: 20px;
-  background-repeat: repeat-x;
-  background-position: bottom;
   border: 2px solid rgb(91, 187, 192);
   border-radius: 5px;
   box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
